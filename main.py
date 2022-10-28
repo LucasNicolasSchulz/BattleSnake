@@ -12,7 +12,6 @@
 
 import random
 from re import X
-from turtle import left, right, up
 import typing
 
 
