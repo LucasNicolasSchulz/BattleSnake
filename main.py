@@ -100,14 +100,14 @@ def move(game_state: typing.Dict) -> typing.Dict:
     opponents = game_state['board']['snakes']
     for snake in opponents:
         for SnakeBody in snake:
-            PartySnake = [SnakeBody["x"], SnakeBody["y"]]
-            if next_move_down== PartySnake:
+            
+            if next_move_down== SnakeBody:
                 is_move_safe["down"] = False
-            if next_move_right == PartySnake:
+            if next_move_right == SnakeBody:
                 is_move_safe["right"] = False
-            if next_move_left == PartySnake:
+            if next_move_left == SnakeBody:
                 is_move_safe["left"] = False
-            if next_move_up == PartySnake:
+            if next_move_up == SnakeBody:
                 is_move_safe["up"] = False
     # Are there any safe moves left?
     safe_moves = []
