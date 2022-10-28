@@ -131,7 +131,7 @@ def move(game_state: typing.Dict) -> typing.Dict:
     for mhmmmEssen in food:
         GekochtesEssen = [mhmmmEssen["x"], mhmmmEssen["y"]]
         print("Essen liste ",GekochtesEssen)
-        entfehrnung = [CleanHead[0] - GekochtesEssen[0], CleanHead[1] - GekochtesEssen[1]]
+        entfehrnung = [GekochtesEssen[0] - CleanHead[0], GekochtesEssen[1] - CleanHead[1]]
         print("Entfehrnung: ",entfehrnung)
         
 
