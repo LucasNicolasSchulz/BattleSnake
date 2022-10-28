@@ -12,7 +12,6 @@
 
 import random
 from re import X
-from turtle import up
 import typing
 
 
@@ -47,6 +46,8 @@ def end(game_state: typing.Dict):
 def move(game_state: typing.Dict) -> typing.Dict:
 
     is_move_safe = {"up": True, "down": True, "left": True, "right": True}
+
+    
 
     # We've included code to prevent your Battlesnake from moving backwards
     my_head = game_state["you"]["body"][0]  # Coordinates of your head
