@@ -138,10 +138,10 @@ def move(game_state: typing.Dict) -> typing.Dict:
             nächsteDistance = tempDistance
             nächstePosition = IntEssen
 
-    #Wegbeschreibung 
+    #Wegbeschreibung + finden (print("WegBeschreibung: ",WegBeschreibung))
     WegBeschreibung = [nächstePosition[0] - CleanHead[0], nächstePosition[1] - CleanHead[1]]
     
-    print("WegBeschreibung: ",WegBeschreibung)
+    print("Leben: ",game_state['you']['health'])
 
     if is_move_safe["left"] == True and WegBeschreibung[0] < 0:
         return{"move":"left"}
