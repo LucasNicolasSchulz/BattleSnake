@@ -139,8 +139,8 @@ def move(game_state: typing.Dict) -> typing.Dict:
 
     #Wegbeschreibung 
     WegBeschreibung = [nächstePosition[0] - CleanHead[0], nächstePosition[1] - CleanHead[1]]
-
-    print(WegBeschreibung)
+    
+    print("WegBeschreibung: ",WegBeschreibung)
 
 
     print(f"MOVE {game_state['turn']}: {next_move}")
