@@ -10,7 +10,6 @@
 # To get you started we've included code to prevent your Battlesnake from moving backwards.
 # For more info see docs.battlesnake.com
 
-from email import header
 import random
 from re import X
 import typing
@@ -80,7 +79,7 @@ def move(game_state: typing.Dict) -> typing.Dict:
     if my_head["y"] == 10:
         is_move_safe["up"] = False
 
-    print(is_move_safe)
+    #print(is_move_safe)
 
     # TODO: Step 2 - Prevent your Battlesnake from colliding with itself
     my_body = game_state['you']['body']
@@ -90,14 +89,14 @@ def move(game_state: typing.Dict) -> typing.Dict:
     next_move_up = [my_head["x"], my_head["y"]+1]
     next_move_left = [my_head["x"]-1, my_head["y"]]
     next_move_right = [my_head["x"]+1, my_head["y"]]
-    print(next_move_down)
+    #print(next_move_down)
     
 
 
     
     for SnakeBody in my_body:
         PartySnake = [SnakeBody["x"], SnakeBody["y"]]
-        print(PartySnake)
+        #print(PartySnake)
         if next_move_down== PartySnake:
             is_move_safe["down"] = False
         if next_move_right == PartySnake:
@@ -128,13 +127,20 @@ def move(game_state: typing.Dict) -> typing.Dict:
     
     CleanHead = [my_head["x"], my_head["y"]]
 
-    for mhmmmEssen in food:
-        GekochtesEssen = [mhmmmEssen["x"], mhmmmEssen["y"]]
-        print("Essen liste ",GekochtesEssen)
-        entfehrnung = [GekochtesEssen[0] - CleanHead[0], GekochtesEssen[1] - CleanHead[1]]
-        print("Entfehrnung: ",entfehrnung)
-        
+    nächsteDistance = 100
+    nächstePosition = [0,0]
+    WegBeschreibung = [0,0]
+    for NächstesEssen in food:
+        IntEssen = [NächstesEssen["x"], NächstesEssen["y"]]
+        tempDistance = abs(IntEssen[0] - CleanHead[0]) + abs(IntEssen[1] - CleanHead[1])
+        if tempDistance < nächsteDistance:
+            nächsteDistance = tempDistance
+            nächstePosition = IntEssen
 
+    #Wegbeschreibung 
+    WegBeschreibung = [nächstePosition[0] - CleanHead[0], nächstePosition[1] - CleanHead[1]]
+
+    print(WegBeschreibung)
 
 
     print(f"MOVE {game_state['turn']}: {next_move}")
