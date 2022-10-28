@@ -13,8 +13,8 @@
 from email import header
 import random
 from re import X
-from turtle import distance
 import typing
+
 
 
 # info is called when you create your Battlesnake on play.battlesnake.com
