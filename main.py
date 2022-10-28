@@ -12,6 +12,7 @@
 
 import random
 from re import X
+from turtle import left, right, up
 import typing
 
 
@@ -119,7 +120,7 @@ def move(game_state: typing.Dict) -> typing.Dict:
         print(f"MOVE {game_state['turn']}: No safe moves detected! Moving down")
         return {"move": "down"}
 
-    # Choose a random move from the safe ones
+    # Choose arandom move from the safe ones
     next_move = random.choice(safe_moves)
 
     # TODO: Step 4 - Move towards food instead of random, to regain health and survive longer
@@ -141,6 +142,15 @@ def move(game_state: typing.Dict) -> typing.Dict:
     WegBeschreibung = [nächstePosition[0] - CleanHead[0], nächstePosition[1] - CleanHead[1]]
     
     print("WegBeschreibung: ",WegBeschreibung)
+
+    if is_move_safe["left"] == True and WegBeschreibung[0] < 0:
+        return{"move":"left"}
+    if is_move_safe["right"] == True and WegBeschreibung[0] > 0:
+        return{"move":"right"}
+    if is_move_safe["up"] == True and WegBeschreibung[1] > 0:
+        return{"move":"up"}
+    if is_move_safe["down"] == True and WegBeschreibung[1] < 0:
+        return{"move":"down"}
 
 
     print(f"MOVE {game_state['turn']}: {next_move}")
