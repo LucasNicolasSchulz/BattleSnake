@@ -13,6 +13,7 @@
 from email import header
 import random
 from re import X
+from turtle import distance
 import typing
 
 
@@ -130,8 +131,8 @@ def move(game_state: typing.Dict) -> typing.Dict:
     for mhmmmEssen in food:
         GekochtesEssen = [mhmmmEssen["x"], mhmmmEssen["y"]]
         print("Essen liste ",GekochtesEssen)
-        print("entfehrnung X", CleanHead[0] - GekochtesEssen[0])
-        print("entfehrnung Y", CleanHead[1] - GekochtesEssen[1])
+        entfehrnung = [CleanHead[0] - GekochtesEssen[0], CleanHead[1] - GekochtesEssen[1]]
+        print("Entfehrnung: ",entfehrnung)
         
 
 
