@@ -84,10 +84,10 @@ def move(game_state: typing.Dict) -> typing.Dict:
     my_body = game_state['you']['body']
     
     #Next Move Variabeln
-    next_move_down = [my_head["x"] and my_head["y"]-1]
-    next_move_up = [my_head["x"] and ["y"]+1]
-    next_move_left = [my_head["x"]-1 and ["y"]]
-    next_move_right = [my_head["x"]+1 and ["y"]]
+    next_move_down = [my_head["x"], my_head["y"]-1]
+    next_move_up = [my_head["x"], ["y"]+1]
+    next_move_left = [my_head["x"]-1, ["y"]]
+    next_move_right = [my_head["x"]+1, ["y"]]
     print(next_move_down)
 
 
