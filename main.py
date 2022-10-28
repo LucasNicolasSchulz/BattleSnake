@@ -10,6 +10,7 @@
 # To get you started we've included code to prevent your Battlesnake from moving backwards.
 # For more info see docs.battlesnake.com
 
+from email import header
 import random
 from re import X
 import typing
@@ -124,8 +125,14 @@ def move(game_state: typing.Dict) -> typing.Dict:
     # TODO: Step 4 - Move towards food instead of random, to regain health and survive longer
     food = game_state['board']['food']
     
-    print("food", food)
+    CleanHead = [my_head["x"], my_head["y"]]
 
+    for mhmmmEssen in food:
+        GekochtesEssen = [food["x"], food["y"]]
+        print(GekochtesEssen)
+        print("entfehrnung X", my_head["x"] - food["x"])
+        print("entfehrnung Y", my_head["y"] - food["y"])
+        
 
 
 
