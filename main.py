@@ -89,11 +89,12 @@ def move(game_state: typing.Dict) -> typing.Dict:
     next_move_left = [my_head["x"]-1, my_head["y"]]
     next_move_right = [my_head["x"]+1, my_head["y"]]
     print(next_move_down)
-
+    
 
 
     
     for SnakeBody in my_body:
+        print(SnakeBody)
         if next_move_down== SnakeBody:
             is_move_safe["down"] = False
         if next_move_right == SnakeBody:
