@@ -97,7 +97,7 @@ def move(game_state: typing.Dict) -> typing.Dict:
     
 
     # TODO: Step 3 - Prevent your Battlesnake from colliding with other Battlesnakes
-    opponents = game_state['board']['snakes']['body']
+    opponents = game_state['board']['snakes']
     for snake in opponents:
         Intschlange = [snake["x"], snake["y"]]
         for SnakeBody in Intschlange:           
