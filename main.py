@@ -122,18 +122,6 @@ def move(game_state: typing.Dict) -> typing.Dict:
     my_neck = game_state["you"]["body"][1] #Coordinaten von deinem Nacken
     food = game_state['board']['food']#Coordinaten von dem Essen auf dem Feld
 
-    if my_neck["x"] < my_head["x"]:  # Neck is left of head, don't move left
-        is_move_safe["left"] = False
-
-    elif my_neck["x"] > my_head["x"]:  # Neck is right of head, don't move right
-        is_move_safe["right"] = False
-
-    elif my_neck["y"] < my_head["y"]:  # Neck is below head, don't move down
-        is_move_safe["down"] = False
-
-    elif my_neck["y"] > my_head["y"]:  # Neck is above head, don't move up
-        is_move_safe["up"] = False
-
 
     #Next Move Variabeln
     next_move_down = [Intmy_head[0], Intmy_head[1]-1]
@@ -151,15 +139,7 @@ def move(game_state: typing.Dict) -> typing.Dict:
             spielfelddown[Snakebody[1]][Snakebody[0]] = 1  
             spielfeldleft[Snakebody[1]][Snakebody[0]] = 1  
             spielfeldright[Snakebody[1]][Snakebody[0]] = 1  
-            if next_move_down == Snakebody:
-                is_move_safe["down"] = False
-            if next_move_right == Snakebody:
-                is_move_safe["right"] = False
-            if next_move_left == Snakebody:
-                is_move_safe["left"] = False
-            if next_move_up == Snakebody:
-                is_move_safe["up"] = False
-
+            
     # TODO: - Essen finden und essen mit Flood Fill
     nächsteDistance = 100
     nächstePosition = [0,0]
@@ -176,6 +156,20 @@ def move(game_state: typing.Dict) -> typing.Dict:
     AnzahlFelderup = flood_fill(Intmy_head[1]+1, Intmy_head[0], 0, 1, spielfeldup, 0)
     AnzahlFelderLeft = flood_fill(Intmy_head[1], Intmy_head[0]-1, 0, 1, spielfeldleft, 0)
     AnzahlFelderRight = flood_fill(Intmy_head[1], Intmy_head[0]+1, 0, 1, spielfeldright, 0)
+
+    print("R: ",AnzahlFelderRight)
+    print("L: ",AnzahlFelderLeft)
+    print("U: ",AnzahlFelderup)
+    print("D: ",AnzahlFelderDown)
+
+    if AnzahlFelderDown != 0:
+        is_move_safe["down"] = True
+    if AnzahlFelderup != 0:
+        is_move_safe["up"] = True
+    if AnzahlFelderLeft != 0:
+        is_move_safe["left"] = True
+    if AnzahlFelderRight != 0:
+        is_move_safe["right"] = True
 
     
     BestMove = "down"
