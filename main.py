@@ -37,7 +37,7 @@ def start(game_state: typing.Dict):
 
 AnzahlFelder = 0
 
-def flood_fill(x ,y, old, new, field, AnzahlFelder): 
+def flood_fill(y,x, old, new, field, AnzahlFelder): 
     
     if x < 0 or x >= 11 or y < 0 or y >= 11:
         return AnzahlFelder
@@ -46,10 +46,10 @@ def flood_fill(x ,y, old, new, field, AnzahlFelder):
     field[y][x] = new
     AnzahlFelder = AnzahlFelder + 1
 
-    AnzahlFelder = flood_fill(x+1, y, old, new, field, AnzahlFelder)
-    AnzahlFelder = flood_fill(x-1, y, old, new, field, AnzahlFelder)
-    AnzahlFelder = flood_fill(x, y+1, old, new, field, AnzahlFelder)
-    AnzahlFelder = flood_fill(x, y-1, old, new, field, AnzahlFelder)
+    AnzahlFelder = flood_fill( y,x+1, old, new, field, AnzahlFelder)
+    AnzahlFelder = flood_fill( y,x-1, old, new, field, AnzahlFelder)
+    AnzahlFelder = flood_fill( y+1,x, old, new, field, AnzahlFelder)
+    AnzahlFelder = flood_fill( y-1,x, old, new, field, AnzahlFelder)
     return AnzahlFelder
 
 # end is called when your Battlesnake finishes a game
