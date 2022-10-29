@@ -204,13 +204,13 @@ def move(game_state: typing.Dict) -> typing.Dict:
     CleanHead = [my_head["x"], my_head["y"]]
 
     
-    AnzahlFelderDown = flood_fill(CleanHead[1]-1, CleanHead[0], 0, 3, spielfelddown, 0)
+    AnzahlFelderDown = flood_fill(CleanHead[1]-1, CleanHead[0], 0, 1, spielfelddown, 0)
     print("D: ",AnzahlFelderDown)
-    AnzahlFelderup = flood_fill(CleanHead[1]+1, CleanHead[0], 0, 3, spielfeldup, 0)
+    AnzahlFelderup = flood_fill(CleanHead[1]+1, CleanHead[0], 0, 1, spielfeldup, 0)
     print("U: ",AnzahlFelderup)
-    AnzahlFelderLeft = flood_fill(CleanHead[1], CleanHead[0]-1, 0, 3, spielfeldleft, 0)
+    AnzahlFelderLeft = flood_fill(CleanHead[1], CleanHead[0]-1, 0, 1, spielfeldleft, 0)
     print("L: ",AnzahlFelderLeft)
-    AnzahlFelderRight = flood_fill(CleanHead[1], CleanHead[0]+1, 0, 3, spielfeldright, 0)
+    AnzahlFelderRight = flood_fill(CleanHead[1], CleanHead[0]+1, 0, 1, spielfeldright, 0)
     print("R: ",AnzahlFelderRight)
     print("/////////////////////////////////")
     
