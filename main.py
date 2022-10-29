@@ -193,7 +193,7 @@ def move(game_state: typing.Dict) -> typing.Dict:
 
     if len(safe_moves) == 0:
         print(f"MOVE {game_state['turn']}: No safe moves detected! Moving down")
-        return {"move": "down"}
+        
 
     # Choose arandom move from the safe ones
     # next_move = random.choice(safe_moves)
