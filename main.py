@@ -48,6 +48,19 @@ def move(game_state: typing.Dict) -> typing.Dict:
 
     is_move_safe = {"up": True, "down": True, "left": True, "right": True}
 
+    spielfeld = [
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+]
     
 
     # We've included code to prevent your Battlesnake from moving backwards
@@ -100,7 +113,8 @@ def move(game_state: typing.Dict) -> typing.Dict:
     opponents = game_state['board']['snakes']
     for snake in opponents:      
         IntSnakeBody = snake['body']  
-        for SnakeBody in IntSnakeBody:  
+        for SnakeBody in IntSnakeBody:
+            spielfeld[SnakeBody["y"], SnakeBody["x"]] = 1
             SnakeBody = [SnakeBody["x"], SnakeBody["y"]]         
             if next_move_down== SnakeBody:
                 is_move_safe["down"] = False
@@ -110,6 +124,13 @@ def move(game_state: typing.Dict) -> typing.Dict:
                 is_move_safe["left"] = False
             if next_move_up == SnakeBody:
                 is_move_safe["up"] = False
+
+    for y in range(len(spielfeld)):
+        for x in range(len(spielfeld[0])):
+            print(spielfeld[y][x], end=' ')
+        if x == len(spielfeld[0])-1:
+            print('\n')
+            
     # Are there any safe moves left?
     safe_moves = []
     for move, isSafe in is_move_safe.items():
