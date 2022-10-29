@@ -180,45 +180,45 @@ def move(game_state: typing.Dict) -> typing.Dict:
 
 
 
-    nächsteDistance = 100
-    nächstePosition = [0,0]
-    WegBeschreibung = [0,0]
-    for NächstesEssen in food:
-        IntEssen = [NächstesEssen["x"], NächstesEssen["y"]]
-        tempDistance = abs(IntEssen[0] - CleanHead[0]) + abs(IntEssen[1] - CleanHead[1])
-        if tempDistance < nächsteDistance:
-            nächsteDistance = tempDistance
-            nächstePosition = IntEssen
+    # nächsteDistance = 100
+    # nächstePosition = [0,0]
+    # WegBeschreibung = [0,0]
+    # for NächstesEssen in food:
+    #     IntEssen = [NächstesEssen["x"], NächstesEssen["y"]]
+    #     tempDistance = abs(IntEssen[0] - CleanHead[0]) + abs(IntEssen[1] - CleanHead[1])
+    #     if tempDistance < nächsteDistance:
+    #         nächsteDistance = tempDistance
+    #         nächstePosition = IntEssen
 
-    #Wegbeschreibung + finden (print("WegBeschreibung: ",WegBeschreibung))
-    WegBeschreibung = [nächstePosition[0] - CleanHead[0], nächstePosition[1] - CleanHead[1]]
+    # #Wegbeschreibung + finden (print("WegBeschreibung: ",WegBeschreibung))
+    # WegBeschreibung = [nächstePosition[0] - CleanHead[0], nächstePosition[1] - CleanHead[1]]
     
-    #print("Leben: ",game_state['you']['health'])
-    DeinLeben = game_state['you']['health']
+    # #print("Leben: ",game_state['you']['health'])
+    # DeinLeben = game_state['you']['health']
 
-    if DeinLeben <= 100:
-        if is_move_safe["left"] == True and WegBeschreibung[0] < 0:
-            return{"move":"left"}
-        if is_move_safe["right"] == True and WegBeschreibung[0] > 0:
-            return{"move":"right"}
-        if is_move_safe["up"] == True and WegBeschreibung[1] > 0:
-            return{"move":"up"}
-        if is_move_safe["down"] == True and WegBeschreibung[1] < 0:
-            return{"move":"down"}
+    # if DeinLeben <= 100:
+    #     if is_move_safe["left"] == True and WegBeschreibung[0] < 0:
+    #         return{"move":"left"}
+    #     if is_move_safe["right"] == True and WegBeschreibung[0] > 0:
+    #         return{"move":"right"}
+    #     if is_move_safe["up"] == True and WegBeschreibung[1] > 0:
+    #         return{"move":"up"}
+    #     if is_move_safe["down"] == True and WegBeschreibung[1] < 0:
+    #         return{"move":"down"}
     
-    else:
-        if is_move_safe["left"] == True and WegBeschreibung[0] > 0:
-            return{"move":"left"}
-        if is_move_safe["right"] == True and WegBeschreibung[0] < 0:
-            return{"move":"right"}
-        if is_move_safe["up"] == True and WegBeschreibung[1] < 0:
-            return{"move":"up"}
-        if is_move_safe["down"] == True and WegBeschreibung[1] > 0:
-            return{"move":"down"}
+    # else:
+    #     if is_move_safe["left"] == True and WegBeschreibung[0] > 0:
+    #         return{"move":"left"}
+    #     if is_move_safe["right"] == True and WegBeschreibung[0] < 0:
+    #         return{"move":"right"}
+    #     if is_move_safe["up"] == True and WegBeschreibung[1] < 0:
+    #         return{"move":"up"}
+    #     if is_move_safe["down"] == True and WegBeschreibung[1] > 0:
+    #         return{"move":"down"}
 
 
-    print(f"MOVE {game_state['turn']}: {next_move}")
-    return {"move": next_move}
+    # print(f"MOVE {game_state['turn']}: {next_move}")
+    # return {"move": next_move}
 
     
 
