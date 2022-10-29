@@ -186,6 +186,8 @@ def move(game_state: typing.Dict) -> typing.Dict:
     if AnzahlFelderLeft < AnzahlFelderRight and AnzahlFelderDown < AnzahlFelderRight and AnzahlFelderup < AnzahlFelderRight:
         BestMove = "right"
 
+    print(BestMove)
+
     #Wegbeschreibung + finden (print("WegBeschreibung: ",WegBeschreibung))
     WegBeschreibung = [nächstePosition[0] - Intmy_head[0], nächstePosition[1] - Intmy_head[1]]
 
@@ -197,7 +199,7 @@ def move(game_state: typing.Dict) -> typing.Dict:
         return{"move":"up"}
     if is_move_safe["down"] == True and WegBeschreibung[1] < 0:
         return{"move":"down"}
-    print(BestMove)
+    
     return{"move":BestMove}
 
     # Start server when `python main.py` is run
