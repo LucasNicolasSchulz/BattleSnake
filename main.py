@@ -115,7 +115,7 @@ def move(game_state: typing.Dict) -> typing.Dict:
         IntSnakeBody = snake['body']  
         for SnakeBody in IntSnakeBody:
             SnakeBody = [SnakeBody["x"], SnakeBody["y"]]   
-            spielfeld[SnakeBody[1], SnakeBody[0]] = 1      
+            spielfeld[SnakeBody[1]][SnakeBody[0]] = 1      
             if next_move_down== SnakeBody:
                 is_move_safe["down"] = False
             if next_move_right == SnakeBody:
