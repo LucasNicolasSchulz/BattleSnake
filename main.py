@@ -196,24 +196,30 @@ def move(game_state: typing.Dict) -> typing.Dict:
         return {"move": "down"}
 
     # Choose arandom move from the safe ones
-    next_move = random.choice(safe_moves)
+    # next_move = random.choice(safe_moves)
 
     # TODO: Step 4 - Move towards food instead of random, to regain health and survive longer
     food = game_state['board']['food']
     
     CleanHead = [my_head["x"], my_head["y"]]
 
-    
+
+
     AnzahlFelderDown = flood_fill(CleanHead[1]-1, CleanHead[0], 0, 1, spielfelddown, 0)
-    print("D: ",AnzahlFelderDown)
     AnzahlFelderup = flood_fill(CleanHead[1]+1, CleanHead[0], 0, 1, spielfeldup, 0)
-    print("U: ",AnzahlFelderup)
     AnzahlFelderLeft = flood_fill(CleanHead[1], CleanHead[0]-1, 0, 1, spielfeldleft, 0)
-    print("L: ",AnzahlFelderLeft)
     AnzahlFelderRight = flood_fill(CleanHead[1], CleanHead[0]+1, 0, 1, spielfeldright, 0)
-    print("R: ",AnzahlFelderRight)
-    print("/////////////////////////////////")
     
+    # is_move_really_save = {"up": AnzahlFelderup, "down": AnzahlFelderDown, "left": AnzahlFelderLeft, "right": AnzahlFelderRight}
+
+    BestMove = "down"
+    if AnzahlFelderDown < AnzahlFelderup and AnzahlFelderLeft < AnzahlFelderup and AnzahlFelderRight < AnzahlFelderup:
+        BestMove = "up"
+    if AnzahlFelderup < AnzahlFelderLeft and AnzahlFelderDown < AnzahlFelderLeft and AnzahlFelderRight < AnzahlFelderLeft:
+        BestMove = "left"
+    if AnzahlFelderLeft < AnzahlFelderRight and AnzahlFelderDown < AnzahlFelderRight and AnzahlFelderup < AnzahlFelderRight:
+        BestMove = "right"
+
 
 
 
@@ -234,28 +240,28 @@ def move(game_state: typing.Dict) -> typing.Dict:
     DeinLeben = game_state['you']['health']
 
     if DeinLeben <= 100:
-        if is_move_safe["left"] == True and WegBeschreibung[0] < 0:
+        if BestMove == "left" and WegBeschreibung[0] < 0:
             return{"move":"left"}
-        if is_move_safe["right"] == True and WegBeschreibung[0] > 0:
+        if BestMove == "right" and WegBeschreibung[0] > 0:
             return{"move":"right"}
-        if is_move_safe["up"] == True and WegBeschreibung[1] > 0:
+        if BestMove == "up" and WegBeschreibung[1] > 0:
             return{"move":"up"}
-        if is_move_safe["down"] == True and WegBeschreibung[1] < 0:
+        if BestMove == "down" and WegBeschreibung[1] < 0:
             return{"move":"down"}
     
     else:
-        if is_move_safe["left"] == True and WegBeschreibung[0] > 0:
+        if BestMove == "left" and WegBeschreibung[0] > 0:
             return{"move":"left"}
-        if is_move_safe["right"] == True and WegBeschreibung[0] < 0:
+        if BestMove == "right" and WegBeschreibung[0] < 0:
             return{"move":"right"}
-        if is_move_safe["up"] == True and WegBeschreibung[1] < 0:
+        if BestMove == "up" and WegBeschreibung[1] < 0:
             return{"move":"up"}
-        if is_move_safe["down"] == True and WegBeschreibung[1] > 0:
+        if BestMove == "down" and WegBeschreibung[1] > 0:
             return{"move":"down"}
 
 
-    print(f"MOVE {game_state['turn']}: {next_move}")
-    return {"move": next_move}
+    # print(f"MOVE {game_state['turn']}: {next_move}")
+    # return {"move": next_move}
 
     
 
