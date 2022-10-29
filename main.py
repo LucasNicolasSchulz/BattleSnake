@@ -175,6 +175,6 @@ def move(game_state: typing.Dict) -> typing.Dict:
         return{"move":"up"}
     if next_move_down == True and WegBeschreibung[1] < 0:
         return{"move":"down"}
-
+    print(BestMove)
     return{"move":BestMove}
     
