@@ -115,12 +115,6 @@ def move(game_state: typing.Dict) -> typing.Dict:
     [0,0,0,0,0,0,0,0,0,0,0],
     ]
 
-    #Next Move Variabeln
-    next_move_down = [my_head["x"], my_head["y"]-1]
-    next_move_up = [my_head["x"], my_head["y"]+1]
-    next_move_left = [my_head["x"]-1, my_head["y"]]
-    next_move_right = [my_head["x"]+1, my_head["y"]]
-
     #Verhindert das die Schlange in seinen eigenen Nacken geht 
     my_head = game_state["you"]["body"][0] #Coordinaten von deinem Kopf
     Intmy_head = [my_head["x"], my_head["y"]] #Coordinaten von deinem Kopf reines Int
@@ -128,6 +122,13 @@ def move(game_state: typing.Dict) -> typing.Dict:
     Intmy_neck = [my_neck["x"], my_neck["y"]] #Coordinaten von deinem Nacken reines Int
     food = game_state['board']['food']#Coordinaten von dem Essen auf dem Feld
     IntFood = [food["x"], food["y"]]
+
+    #Next Move Variabeln
+    next_move_down = [Intmy_head[0], Intmy_head[1]-1]
+    next_move_up = [Intmy_head[0], Intmy_head[1]+1]
+    next_move_left = [Intmy_head[0]-1, Intmy_head[1]]
+    next_move_right = [Intmy_head[0]+1, Intmy_head[1]]
+
     #Schlangen eintragen ins Flood Fill
     opponents = game_state['board']['snakes']
     for snake in opponents:
@@ -138,7 +139,7 @@ def move(game_state: typing.Dict) -> typing.Dict:
             spielfelddown[Snakebody[1]][Snakebody[0]] = 1  
             spielfeldleft[Snakebody[1]][Snakebody[0]] = 1  
             spielfeldright[Snakebody[1]][Snakebody[0]] = 1  
-            if next_move_down== Snakebody:
+            if next_move_down == Snakebody:
                 is_move_safe["down"] = False
             if next_move_right == Snakebody:
                 is_move_safe["right"] = False
