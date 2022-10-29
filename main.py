@@ -176,6 +176,7 @@ def move(game_state: typing.Dict) -> typing.Dict:
     print("L: ",AnzahlFelderLeft)
     AnzahlFelderRight = flood_fill(CleanHead[1], CleanHead[0]+1, 0, 3, spielfeld, 0)
     print("R: ",AnzahlFelderRight)
+    return{"move":"Down"}
 
 
 
