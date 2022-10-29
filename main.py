@@ -158,13 +158,13 @@ def move(game_state: typing.Dict) -> typing.Dict:
     print("U: ",AnzahlFelderup)
     print("D: ",AnzahlFelderDown)
 
-    if AnzahlFelderDown != 0:
+    if AnzahlFelderDown >= game_state["you"]["lenght"]:
         is_move_safe["down"] = True
-    if AnzahlFelderup != 0:
+    if AnzahlFelderup >= game_state["you"]["lenght"]:
         is_move_safe["up"] = True
-    if AnzahlFelderLeft != 0:
+    if AnzahlFelderLeft >= game_state["you"]["lenght"]:
         is_move_safe["left"] = True
-    if AnzahlFelderRight != 0:
+    if AnzahlFelderRight >= game_state["you"]["lenght"]:
         is_move_safe["right"] = True
 
     
