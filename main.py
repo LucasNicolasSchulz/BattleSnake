@@ -158,13 +158,13 @@ def move(game_state: typing.Dict) -> typing.Dict:
     print("U: ",AnzahlFelderup)
     print("D: ",AnzahlFelderDown)
 
-    if AnzahlFelderDown >= game_state["you"]["length"]:
+    if AnzahlFelderDown != 0:
         is_move_safe["down"] = True
-    if AnzahlFelderup >= game_state["you"]["length"]:
+    if AnzahlFelderup != 0:
         is_move_safe["up"] = True
-    if AnzahlFelderLeft >= game_state["you"]["length"]:
+    if AnzahlFelderLeft != 0:
         is_move_safe["left"] = True
-    if AnzahlFelderRight >= game_state["you"]["length"]:
+    if AnzahlFelderRight != 0:
         is_move_safe["right"] = True
 
     
@@ -181,13 +181,13 @@ def move(game_state: typing.Dict) -> typing.Dict:
     #Wegbeschreibung + finden (print("WegBeschreibung: ",WegBeschreibung))
     WegBeschreibung = [nächstePosition[0] - Intmy_head[0], nächstePosition[1] - Intmy_head[1]]
 
-    if is_move_safe["left"] == True and WegBeschreibung[0] < 0:
+    if is_move_safe["left"] == True and WegBeschreibung[0] < 0 and BestMove == "left":
         return{"move":"left"}
-    if is_move_safe["right"] == True and WegBeschreibung[0] > 0:
+    if is_move_safe["right"] == True and WegBeschreibung[0] > 0 and BestMove == "right":
         return{"move":"right"}
-    if is_move_safe["up"] == True and WegBeschreibung[1] > 0:
+    if is_move_safe["up"] == True and WegBeschreibung[1] > 0 and BestMove == "up":
         return{"move":"up"}
-    if is_move_safe["down"] == True and WegBeschreibung[1] < 0:
+    if is_move_safe["down"] == True and WegBeschreibung[1] < 0 and BestMove == "down":
         return{"move":"down"}
     
     return{"move":BestMove}
