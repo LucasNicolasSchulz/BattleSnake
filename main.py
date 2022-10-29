@@ -118,10 +118,9 @@ def move(game_state: typing.Dict) -> typing.Dict:
     #Verhindert das die Schlange in seinen eigenen Nacken geht 
     my_head = game_state["you"]["body"][0] #Coordinaten von deinem Kopf
     Intmy_head = [my_head["x"], my_head["y"]] #Coordinaten von deinem Kopf reines Int
-    my_neck = game_state["you"]["body"][1] #Coordinaten von deinem Nacken
-    Intmy_neck = [my_neck["x"], my_neck["y"]] #Coordinaten von deinem Nacken reines Int
+    #my_neck = game_state["you"]["body"][1] #Coordinaten von deinem Nacken
     food = game_state['board']['food']#Coordinaten von dem Essen auf dem Feld
-    IntFood = [food["x"], food["y"]]
+
 
     #Next Move Variabeln
     next_move_down = [Intmy_head[0], Intmy_head[1]-1]
