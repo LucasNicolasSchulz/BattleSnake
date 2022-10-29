@@ -49,6 +49,7 @@ def end(game_state: typing.Dict):
 
 #Die Funktion move wir jede runde aufgerufen und gibt deinen nächsten Zug zurück
 def move(game_state: typing.Dict) -> typing.Dict:
+
     #is_move_safe setzt die möglichen bewegungen auf True
     is_move_safe = {"up": True, "down": True, "left": True, "right": True}
     print("hallo")
@@ -118,8 +119,20 @@ def move(game_state: typing.Dict) -> typing.Dict:
     #Verhindert das die Schlange in seinen eigenen Nacken geht 
     my_head = game_state["you"]["body"][0] #Coordinaten von deinem Kopf
     Intmy_head = [my_head["x"], my_head["y"]] #Coordinaten von deinem Kopf reines Int
-    #my_neck = game_state["you"]["body"][1] #Coordinaten von deinem Nacken
+    my_neck = game_state["you"]["body"][1] #Coordinaten von deinem Nacken
     food = game_state['board']['food']#Coordinaten von dem Essen auf dem Feld
+
+    if my_neck["x"] < my_head["x"]:  # Neck is left of head, don't move left
+        is_move_safe["left"] = False
+
+    elif my_neck["x"] > my_head["x"]:  # Neck is right of head, don't move right
+        is_move_safe["right"] = False
+
+    elif my_neck["y"] < my_head["y"]:  # Neck is below head, don't move down
+        is_move_safe["down"] = False
+
+    elif my_neck["y"] > my_head["y"]:  # Neck is above head, don't move up
+        is_move_safe["up"] = False
 
 
     #Next Move Variabeln
