@@ -80,9 +80,7 @@ def move(game_state: typing.Dict) -> typing.Dict:
     [0,0,0,0,0,0,0,0,0,0,0],
 ]
     
-    AnzahlFelder = flood_fill(CleanHead[1]-1, CleanHead[0], 0, 3, spielfeld, 0)
-    print(AnzahlFelder)
-
+    
     # We've included code to prevent your Battlesnake from moving backwards
     my_head = game_state["you"]["body"][0]  # Coordinates of your head
     my_neck = game_state["you"]["body"][1]  # Coordinates of your "neck"
@@ -168,6 +166,11 @@ def move(game_state: typing.Dict) -> typing.Dict:
     food = game_state['board']['food']
     
     CleanHead = [my_head["x"], my_head["y"]]
+
+    AnzahlFelder = flood_fill(CleanHead[1]-1, CleanHead[0], 0, 3, spielfeld, 0)
+    print(AnzahlFelder)
+
+
 
     nächsteDistance = 100
     nächstePosition = [0,0]
