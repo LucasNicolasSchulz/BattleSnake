@@ -66,7 +66,7 @@ def move(game_state: typing.Dict) -> typing.Dict:
 
     is_move_safe = {"up": True, "down": True, "left": True, "right": True}
 
-    spielfeld = [
+    spielfeldup = [
     [0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0],
@@ -78,7 +78,46 @@ def move(game_state: typing.Dict) -> typing.Dict:
     [0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0],
-]
+    ]
+    spielfelddown = [
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    ]
+    spielfeldleft = [
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    ]
+    spielfeldright = [
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    ]
     
     
     # We've included code to prevent your Battlesnake from moving backwards
@@ -133,7 +172,10 @@ def move(game_state: typing.Dict) -> typing.Dict:
         IntSnakeBody = snake['body']  
         for SnakeBody in IntSnakeBody:
             SnakeBody = [SnakeBody["x"], SnakeBody["y"]]   
-            spielfeld[SnakeBody[1]][SnakeBody[0]] = 1      
+            spielfeldup[SnakeBody[1]][SnakeBody[0]] = 1
+            spielfelddown[SnakeBody[1]][SnakeBody[0]] = 1  
+            spielfeldleft[SnakeBody[1]][SnakeBody[0]] = 1  
+            spielfeldright[SnakeBody[1]][SnakeBody[0]] = 1        
             if next_move_down== SnakeBody:
                 is_move_safe["down"] = False
             if next_move_right == SnakeBody:
@@ -142,12 +184,6 @@ def move(game_state: typing.Dict) -> typing.Dict:
                 is_move_safe["left"] = False
             if next_move_up == SnakeBody:
                 is_move_safe["up"] = False
-
-    for y in range(len(spielfeld)):
-        for x in range(len(spielfeld[0])):
-            print(spielfeld[y][x], end=' ')
-        if x == len(spielfeld[0])-1:
-            print('\n')
 
     # Are there any safe moves left?
     safe_moves = []
@@ -167,14 +203,14 @@ def move(game_state: typing.Dict) -> typing.Dict:
     
     CleanHead = [my_head["x"], my_head["y"]]
 
-    spielfeldlinks = spielfeld
-    AnzahlFelderDown = flood_fill(CleanHead[1]-1, CleanHead[0], 0, 3, spielfeld, 0)
+    
+    AnzahlFelderDown = flood_fill(CleanHead[1]-1, CleanHead[0], 0, 3, spielfelddown, 0)
     print("D: ",AnzahlFelderDown)
-    AnzahlFelderup = flood_fill(CleanHead[1]+1, CleanHead[0], 0, 3, spielfeld, 0)
+    AnzahlFelderup = flood_fill(CleanHead[1]+1, CleanHead[0], 0, 3, spielfeldup, 0)
     print("U: ",AnzahlFelderup)
-    AnzahlFelderLeft = flood_fill(CleanHead[1], CleanHead[0]-1, 0, 3, spielfeldlinks, 0)
+    AnzahlFelderLeft = flood_fill(CleanHead[1], CleanHead[0]-1, 0, 3, spielfeldleft, 0)
     print("L: ",AnzahlFelderLeft)
-    AnzahlFelderRight = flood_fill(CleanHead[1], CleanHead[0]+1, 0, 3, spielfeld, 0)
+    AnzahlFelderRight = flood_fill(CleanHead[1], CleanHead[0]+1, 0, 3, spielfeldright, 0)
     print("R: ",AnzahlFelderRight)
     return{"move":"down"}
 
