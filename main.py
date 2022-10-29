@@ -177,17 +177,19 @@ def move(game_state: typing.Dict) -> typing.Dict:
         is_move_safe["right"] = False
 
     
-    BestMove = "down"
+    BestMove = ""
     if AnzahlFelderDown < AnzahlFelderup and AnzahlFelderLeft < AnzahlFelderup and AnzahlFelderRight < AnzahlFelderup:
         BestMove = "up"
     if AnzahlFelderup < AnzahlFelderLeft and AnzahlFelderDown < AnzahlFelderLeft and AnzahlFelderRight < AnzahlFelderLeft:
         BestMove = "left"
     if AnzahlFelderLeft < AnzahlFelderRight and AnzahlFelderDown < AnzahlFelderRight and AnzahlFelderup < AnzahlFelderRight:
         BestMove = "right"
+    if AnzahlFelderRight < AnzahlFelderDown and AnzahlFelderLeft < AnzahlFelderDown and AnzahlFelderup < AnzahlFelderDown:
+        BestMove = "Down"
 
     print(BestMove)
 
-    #Wegbeschreibung + finden (print("WegBeschreibung: ",WegBeschreibung))
+    #Wegbeschreibung + finden (print("WegBeschreibung: ",WegBeschreibung)) // sein ding
     WegBeschreibung = [nächstePosition[0] - Intmy_head[0], nächstePosition[1] - Intmy_head[1]]
     
     if is_move_safe["left"] == True and WegBeschreibung[0] < 0:
