@@ -125,9 +125,9 @@ def move(game_state: typing.Dict) -> typing.Dict:
     #Schlangen eintragen ins Flood Fill
     opponents = game_state['board']['snakes']
     for snake in opponents:
-        IntSnakeBody = snake['body']
+        StrSnakeBody = snake['body']
+        IntSnakeBody = [StrSnakeBody["x"], StrSnakeBody["y"]]
         for Snakebody in IntSnakeBody:
-            Snakebody = [Snakebody["x"], Snakebody["y"]]
             spielfeldup[Snakebody[1]][Snakebody[0]] = 1
             spielfelddown[Snakebody[1]][Snakebody[0]] = 1  
             spielfeldleft[Snakebody[1]][Snakebody[0]] = 1  
