@@ -35,6 +35,22 @@ def info() -> typing.Dict:
 def start(game_state: typing.Dict):
     print("GAME START")
 
+AnzahlFelder = 0
+
+def flood_fill(x ,y, old, new, field, AnzahlFelder): 
+    
+    if x < 0 or x >= len(0) or y < 0 or y >= len(11):
+        return AnzahlFelder
+    if field[y][x] != old:
+        return AnzahlFelder
+    field[y][x] = new
+    AnzahlFelder = AnzahlFelder + 1
+
+    AnzahlFelder = flood_fill(x+1, y, old, new, field, AnzahlFelder)
+    AnzahlFelder = flood_fill(x-1, y, old, new, field, AnzahlFelder)
+    AnzahlFelder = flood_fill(x, y+1, old, new, field, AnzahlFelder)
+    AnzahlFelder = flood_fill(x, y-1, old, new, field, AnzahlFelder)
+    return AnzahlFelder
 
 # end is called when your Battlesnake finishes a game
 def end(game_state: typing.Dict):
@@ -45,6 +61,8 @@ def end(game_state: typing.Dict):
 # Valid moves are "up", "down", "left", or "right"
 # See https://docs.battlesnake.com/api/example-move for available data
 def move(game_state: typing.Dict) -> typing.Dict:
+
+    
 
     is_move_safe = {"up": True, "down": True, "left": True, "right": True}
 
@@ -62,6 +80,8 @@ def move(game_state: typing.Dict) -> typing.Dict:
     [0,0,0,0,0,0,0,0,0,0,0],
 ]
     
+    AnzahlFelder = flood_fill(CleanHead[1]-1, CleanHead[0], 0, 3, spielfeld, 0)
+    print(AnzahlFelder)
 
     # We've included code to prevent your Battlesnake from moving backwards
     my_head = game_state["you"]["body"][0]  # Coordinates of your head
@@ -188,6 +208,8 @@ def move(game_state: typing.Dict) -> typing.Dict:
 
     print(f"MOVE {game_state['turn']}: {next_move}")
     return {"move": next_move}
+
+    
 
 
 # Start server when `python main.py` is run
