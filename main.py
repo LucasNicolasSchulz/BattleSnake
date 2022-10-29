@@ -167,6 +167,15 @@ def move(game_state: typing.Dict) -> typing.Dict:
     if AnzahlFelderRight != 0:
         is_move_safe["right"] = True
 
+    if AnzahlFelderDown < game_state["you"]["length"]:
+        is_move_safe["down"] = False
+    if AnzahlFelderup < game_state["you"]["length"]:
+        is_move_safe["up"] = False
+    if AnzahlFelderLeft < game_state["you"]["length"]:
+        is_move_safe["left"] = False
+    if AnzahlFelderRight < game_state["you"]["length"]:
+        is_move_safe["right"] = False
+
     
     BestMove = "down"
     if AnzahlFelderDown < AnzahlFelderup and AnzahlFelderLeft < AnzahlFelderup and AnzahlFelderRight < AnzahlFelderup:
