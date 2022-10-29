@@ -26,7 +26,10 @@ def start(game_state: typing.Dict):
     print("GAME START")
 
 #AnzahlFelder = 0 ist eine Variabel welche für die flood_fill Funktion ist
-AnzahlFelder = 0
+tempAnzahlFelderL = 0
+tempAnzahlFelderR = 0
+tempAnzahlFelderU = 0
+tempAnzahlFelderD = 0
 
 #flood_fill Funktion berechnet die Anzahl der Felder
 def flood_fill(y, x, old, new, field, AnzahlFelder):
@@ -145,10 +148,10 @@ def move(game_state: typing.Dict) -> typing.Dict:
             nächstePosition = IntEssen
 
     #Best Move Herausfinden
-    AnzahlFelderDown = flood_fill(Intmy_head[1]-1, Intmy_head[0], 0, 1, spielfelddown, 0)
-    AnzahlFelderup = flood_fill(Intmy_head[1]+1, Intmy_head[0], 0, 1, spielfeldup, 0)
-    AnzahlFelderLeft = flood_fill(Intmy_head[1], Intmy_head[0]-1, 0, 1, spielfeldleft, 0)
-    AnzahlFelderRight = flood_fill(Intmy_head[1], Intmy_head[0]+1, 0, 1, spielfeldright, 0)
+    AnzahlFelderDown = flood_fill(Intmy_head[1]-1, Intmy_head[0], 0, 1, spielfelddown, tempAnzahlFelderD)
+    AnzahlFelderup = flood_fill(Intmy_head[1]+1, Intmy_head[0], 0, 1, spielfeldup, tempAnzahlFelderU)
+    AnzahlFelderLeft = flood_fill(Intmy_head[1], Intmy_head[0]-1, 0, 1, spielfeldleft, tempAnzahlFelderL)
+    AnzahlFelderRight = flood_fill(Intmy_head[1], Intmy_head[0]+1, 0, 1, spielfeldright, tempAnzahlFelderR)
 
     print("R: ",AnzahlFelderRight)
     print("L: ",AnzahlFelderLeft)
