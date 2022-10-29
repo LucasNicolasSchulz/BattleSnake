@@ -177,29 +177,18 @@ def move(game_state: typing.Dict) -> typing.Dict:
         BestMove = "right"
 
     print(BestMove)
-    #Leben
-    DeinLeben = game_state['you']['health']
+
     #Wegbeschreibung + finden (print("WegBeschreibung: ",WegBeschreibung))
     WegBeschreibung = [nächstePosition[0] - Intmy_head[0], nächstePosition[1] - Intmy_head[1]]
-    if DeinLeben <= 40:
-        if is_move_safe["left"] == True and WegBeschreibung[0] < 0:
-            return{"move":"left"}
-        if is_move_safe["right"] == True and WegBeschreibung[0] > 0:
-            return{"move":"right"}
-        if is_move_safe["up"] == True and WegBeschreibung[1] > 0:
-            return{"move":"up"}
-        if is_move_safe["down"] == True and WegBeschreibung[1] < 0:
-            return{"move":"down"}
-    else:
-        if is_move_safe["left"]:
-            return{"move":"left"}
-        if is_move_safe["right"]:
-            return{"move":"right"}
-        if is_move_safe["up"]:
-            return{"move":"up"}
-        if is_move_safe["down"]:
-            return{"move":"down"}
-
+    
+    if is_move_safe["left"] == True and WegBeschreibung[0] < 0:
+        return{"move":"left"}
+    if is_move_safe["right"] == True and WegBeschreibung[0] > 0:
+        return{"move":"right"}
+    if is_move_safe["up"] == True and WegBeschreibung[1] > 0:
+        return{"move":"up"}
+    if is_move_safe["down"] == True and WegBeschreibung[1] < 0:
+        return{"move":"down"}
     
     return{"move":BestMove}
 
