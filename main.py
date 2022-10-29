@@ -177,4 +177,10 @@ def move(game_state: typing.Dict) -> typing.Dict:
         return{"move":"down"}
     print(BestMove)
     return{"move":BestMove}
+
+    # Start server when `python main.py` is run
+if __name__ == "__main__":
+    from server import run_server
+
+    run_server({"info": info, "start": start, "move": move, "end": end})
     
