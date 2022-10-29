@@ -239,25 +239,27 @@ def move(game_state: typing.Dict) -> typing.Dict:
     #print("Leben: ",game_state['you']['health'])
     DeinLeben = game_state['you']['health']
 
-    if DeinLeben <= 30:
-        if BestMove == "left" and WegBeschreibung[0] < 0:
-            return{"move":"left"}
-        if BestMove == "right" and WegBeschreibung[0] > 0:
-            return{"move":"right"}
-        if BestMove == "up" and WegBeschreibung[1] > 0:
-            return{"move":"up"}
-        if BestMove == "down" and WegBeschreibung[1] < 0:
-            return{"move":"down"}
+    # if DeinLeben <= 30:
+    #     if BestMove == "left" and WegBeschreibung[0] < 0:
+    #         return{"move":"left"}
+    #     if BestMove == "right" and WegBeschreibung[0] > 0:
+    #         return{"move":"right"}
+    #     if BestMove == "up" and WegBeschreibung[1] > 0:
+    #         return{"move":"up"}
+    #     if BestMove == "down" and WegBeschreibung[1] < 0:
+    #         return{"move":"down"}
     
-    else:
-        if BestMove == "left" and WegBeschreibung[0] > 0:
-            return{"move":"left"}
-        if BestMove == "right" and WegBeschreibung[0] < 0:
-            return{"move":"right"}
-        if BestMove == "up" and WegBeschreibung[1] < 0:
-            return{"move":"up"}
-        if BestMove == "down" and WegBeschreibung[1] > 0:
-            return{"move":"down"}
+    # else:
+    #     if BestMove == "left" and WegBeschreibung[0] > 0:
+    #         return{"move":"left"}
+    #     if BestMove == "right" and WegBeschreibung[0] < 0:
+    #         return{"move":"right"}
+    #     if BestMove == "up" and WegBeschreibung[1] < 0:
+    #         return{"move":"up"}
+    #     if BestMove == "down" and WegBeschreibung[1] > 0:
+    #         return{"move":"down"}
+
+    return{"move":BestMove}
 
 
     # print(f"MOVE {game_state['turn']}: {next_move}")
