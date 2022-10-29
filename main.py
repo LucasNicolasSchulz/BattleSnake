@@ -29,7 +29,7 @@ def start(game_state: typing.Dict):
 AnzahlFelder = 0
 
 #flood_fill Funktion berechnet die Anzahl der Felder
-def flood_fill(x, y, old, new, field, AnzahlFelder):
+def flood_fill(y, x, old, new, field, AnzahlFelder):
     if x < 0 or x >= 11 or y < 0 or y >= 11:
         return AnzahlFelder
     if field[y][x] != old:
@@ -119,15 +119,8 @@ def move(game_state: typing.Dict) -> typing.Dict:
     #Verhindert das die Schlange in seinen eigenen Nacken geht 
     my_head = game_state["you"]["body"][0] #Coordinaten von deinem Kopf
     Intmy_head = [my_head["x"], my_head["y"]] #Coordinaten von deinem Kopf reines Int
-    my_neck = game_state["you"]["body"][1] #Coordinaten von deinem Nacken
     food = game_state['board']['food']#Coordinaten von dem Essen auf dem Feld
 
-
-    #Next Move Variabeln
-    next_move_down = [Intmy_head[0], Intmy_head[1]-1]
-    next_move_up = [Intmy_head[0], Intmy_head[1]+1]
-    next_move_left = [Intmy_head[0]-1, Intmy_head[1]]
-    next_move_right = [Intmy_head[0]+1, Intmy_head[1]]
 
     #Schlangen eintragen ins Flood Fill
     opponents = game_state['board']['snakes']
