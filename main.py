@@ -178,13 +178,13 @@ def move(game_state: typing.Dict) -> typing.Dict:
 
     
     BestMove = ""
-    if AnzahlFelderDown < AnzahlFelderup and AnzahlFelderLeft < AnzahlFelderup and AnzahlFelderRight < AnzahlFelderup:
+    if AnzahlFelderDown <= AnzahlFelderup and AnzahlFelderLeft <= AnzahlFelderup and AnzahlFelderRight <= AnzahlFelderup:
         BestMove = "up"
-    if AnzahlFelderup < AnzahlFelderLeft and AnzahlFelderDown < AnzahlFelderLeft and AnzahlFelderRight < AnzahlFelderLeft:
+    if AnzahlFelderup <= AnzahlFelderLeft and AnzahlFelderDown <= AnzahlFelderLeft and AnzahlFelderRight <= AnzahlFelderLeft:
         BestMove = "left"
-    if AnzahlFelderLeft < AnzahlFelderRight and AnzahlFelderDown < AnzahlFelderRight and AnzahlFelderup < AnzahlFelderRight:
+    if AnzahlFelderLeft <= AnzahlFelderRight and AnzahlFelderDown <= AnzahlFelderRight and AnzahlFelderup <= AnzahlFelderRight:
         BestMove = "right"
-    if AnzahlFelderRight < AnzahlFelderDown and AnzahlFelderLeft < AnzahlFelderDown and AnzahlFelderup < AnzahlFelderDown:
+    if AnzahlFelderRight <= AnzahlFelderDown and AnzahlFelderLeft <= AnzahlFelderDown and AnzahlFelderup <= AnzahlFelderDown:
         BestMove = "Down"
 
     print(BestMove)
