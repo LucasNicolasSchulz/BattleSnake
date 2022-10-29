@@ -51,6 +51,7 @@ def end(game_state: typing.Dict):
 def move(game_state: typing.Dict) -> typing.Dict:
     #is_move_safe setzt die möglichen bewegungen auf True
     is_move_safe = {"up": True, "down": True, "left": True, "right": True}
+    print("hallo")
 
     #Die vier verschiedenen Spielfelder werden gemacht für die vier möglichen bewegungen
 
