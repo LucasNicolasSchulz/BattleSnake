@@ -39,7 +39,7 @@ AnzahlFelder = 0
 
 def flood_fill(x ,y, old, new, field, AnzahlFelder): 
     
-    if x < 0 or x >= len(0) or y < 0 or y >= len(11):
+    if x < 0 or x >= 11 or y < 0 or y >= 11:
         return AnzahlFelder
     if field[y][x] != old:
         return AnzahlFelder
