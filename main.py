@@ -188,7 +188,7 @@ def move(game_state: typing.Dict) -> typing.Dict:
     #print("Leben: ",game_state['you']['health'])
     DeinLeben = game_state['you']['health']
 
-    if DeinLeben <= 30:
+    if DeinLeben <= 100:
         if is_move_safe["left"] == True and WegBeschreibung[0] < 0:
             return{"move":"left"}
         if is_move_safe["right"] == True and WegBeschreibung[0] > 0:
