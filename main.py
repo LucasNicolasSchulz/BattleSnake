@@ -137,6 +137,14 @@ def move(game_state: typing.Dict) -> typing.Dict:
             spielfelddown[Snakebody[1]][Snakebody[0]] = 1  
             spielfeldleft[Snakebody[1]][Snakebody[0]] = 1  
             spielfeldright[Snakebody[1]][Snakebody[0]] = 1  
+            if next_move_down== Snakebody:
+                is_move_safe["down"] = False
+            if next_move_right == Snakebody:
+                is_move_safe["right"] = False
+            if next_move_left == Snakebody:
+                is_move_safe["left"] = False
+            if next_move_up == Snakebody:
+                is_move_safe["up"] = False
 
     # TODO: - Essen finden und essen mit Flood Fill
     nächsteDistance = 100
@@ -167,13 +175,13 @@ def move(game_state: typing.Dict) -> typing.Dict:
     #Wegbeschreibung + finden (print("WegBeschreibung: ",WegBeschreibung))
     WegBeschreibung = [nächstePosition[0] - Intmy_head[0], nächstePosition[1] - Intmy_head[1]]
 
-    if next_move_left == True and WegBeschreibung[0] < 0:
+    if is_move_safe["left"] == True and WegBeschreibung[0] < 0:
         return{"move":"left"}
-    if next_move_right == True and WegBeschreibung[0] > 0:
+    if is_move_safe["right"] == True and WegBeschreibung[0] > 0:
         return{"move":"right"}
-    if next_move_up == True and WegBeschreibung[1] > 0:
+    if is_move_safe["up"] == True and WegBeschreibung[1] > 0:
         return{"move":"up"}
-    if next_move_down == True and WegBeschreibung[1] < 0:
+    if is_move_safe["down"] == True and WegBeschreibung[1] < 0:
         return{"move":"down"}
     print(BestMove)
     return{"move":BestMove}
